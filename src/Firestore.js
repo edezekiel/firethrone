@@ -8,6 +8,6 @@ const config = {
     storageBucket: "firethrone-ce9cd.appspot.com",
     messagingSenderId: "385660047741"
   };
-firebase.initializeApp(config);
+let firestore = firebase.initializeApp(config);
 
-// export default firestore
+export default firestore
