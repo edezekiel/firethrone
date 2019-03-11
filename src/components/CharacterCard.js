@@ -2,14 +2,10 @@ import React from 'react'
 
 import { Card, Button, Image } from 'semantic-ui-react'
 
-const margin = {
-  marginTop: '80px'
-}
-
 const CharacterCard = (props) => {
 
   return(
-    <Card centered style={ margin }>
+    <Card centered>
       <Image src={props.character.image} />
       <Card.Content>
         <Card.Header>{props.character.name}</Card.Header>
