@@ -4,7 +4,6 @@ import firebase from 'firebase'
 
 class Users extends Component {
   state = {
-    email: "",
     fullname: ""
   };
 
@@ -18,7 +17,7 @@ class Users extends Component {
     const db = firebase.firestore();
     const userRf = db.collection('users').add({
       fullname: this.state.fullname,
-      email: this.state.email
+      score: this.state.email
     });
 
     this.setState({
