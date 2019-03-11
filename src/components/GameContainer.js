@@ -10,7 +10,7 @@ import GameOver from './GameOver.js'
 export default class GameContainer extends Component {
 
   state = {
-    characters: [null],
+    characters: [],
     viewed: [],
     character: null,
     gameOver: false,
@@ -21,7 +21,7 @@ export default class GameContainer extends Component {
     const db = firebase.firestore();
     db.collection('characters').get()
     .then(res => res.docs.forEach((el) => {
-      this.setState({ characters: [...this.state.characters, el.data()]})
+        this.setState({ characters: [...this.state.characters, el.data()]})
     }))
   }
 
@@ -37,18 +37,18 @@ export default class GameContainer extends Component {
 
   renderFirstCharacter = () => {
     let characters = this.state.characters
-    let num = this.getRandomInt(characters.length)
-    let c = characters[num]
-    return c
+    let randomNum = this.getRandomInt(characters.length)
+    let firstCharacter = characters[randomNum]
+    return firstCharacter
   }
 
   renderNextCharacter = () => {
     let unviewed = this.getUnviewed()
-    let num = this.getRandomInt(unviewed.length)
-    let c = unviewed[num]
-    return c
+    let randomNum = this.getRandomInt(unviewed.length)
+    console.log(this.state.characters, this.state.viewed)
+    let nextCharacter = unviewed[randomNum]
+    return nextCharacter
   }
-
 
   handleClick = (e, c) => {
     if ((e.target.name === "alive") && (c.alive))  {
@@ -63,7 +63,7 @@ export default class GameContainer extends Component {
   selectCharacter = () => {
     if (this.state.newGame) {
       return <StartGame startGame={this.startGame} />
-    } else if (this.state.gameOver) {
+    } else if (this.state.gameOver || (this.state.viewed.length === this.state.characters.length)) {
       return <GameOver restartGame={this.restartGame} streak={this.state.viewed.length} />
     } else if (this.state.viewed.length === 0) {
       return <CharacterCard handleClick={this.handleClick} character={this.renderFirstCharacter()} streak={this.state.viewed.length} />
