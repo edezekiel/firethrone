@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react'
 import GameContainer from './components/GameContainer.js'
 
+import Nav from './components/Nav'
+import Footer from './components/Footer'
+
 let image = "http://watchersonthewall.com/wp-content/uploads/2016/11/game-of-thrones.jpeg"
 
 const mainBg = {
@@ -10,7 +13,7 @@ const mainBg = {
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
   backgroundPosition: 'center',
-  height: '100vh'
+  height: '80vh'
 }
 
 class App extends Component {
@@ -18,9 +21,13 @@ class App extends Component {
 
   render() {
     return (
-      <div style={ mainBg }>
-        <GameContainer />
-      </div>
+      <Container >
+        <Nav />
+        <div style={ mainBg }>
+          <GameContainer/>
+        </div>
+        <Footer />
+      </Container>
     );
   }
 }

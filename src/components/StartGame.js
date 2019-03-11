@@ -6,7 +6,7 @@ import { Button, Container, Segment } from 'semantic-ui-react'
 
 const StartGame = (props) => {
   return(
-    <Container textAlign="center" style={{"height": "100vh", "line-height": "100vh"}}>
+    <Container textAlign="center" style={{"height": "80vh", "line-height": "80vh"}}>
       <Button size="huge" onClick={() => props.startGame()}>New Game</Button>
     </Container>
   )
