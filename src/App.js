@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Characters from './Characters'
 import { Segment, Container } from 'semantic-ui-react'
+
+import GameContainer from './components/GameContainer.js'
 
 class App extends Component {
 
@@ -8,7 +9,7 @@ class App extends Component {
     return (
       <Container>
         <Segment inverted>
-        <Characters />
+          <GameContainer />
         </Segment>
       </Container>
     );
