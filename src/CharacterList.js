@@ -1,3 +1,14 @@
+// uploadCharacterList = function() {
+//   const db = firebase.firestore();
+//   CharacterList.forEach((el) => {
+//     db.collection('characters').add({
+//       name: el.name,
+//       image: el.image,
+//       alive: el.alive,
+//     })
+//   })
+// }
+
 const CharacterList = [
   {name: "Maester Aemon", alive: false , image: "https://www.telegraph.co.uk/content/dam/tv/2017/06/20/aemon_trans_NvBQzQNjv4BqrXQPXGvM58CJoUBPwmOnPxU--41c5Cba04Sh5SZbNZ8.jpg?imwidth=1240"},
 
