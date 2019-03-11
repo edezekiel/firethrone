@@ -20,7 +20,6 @@ class LeaderBoard extends Component {
   }
 
   render() {
-    console.log(this.state)
     return(
       <Container textAlign="center" style={{"padding-top": "10vh", "width": "50%"}}>
         <Segment inverted>
@@ -28,7 +27,7 @@ class LeaderBoard extends Component {
           {this.state.players.length ?
           <div>
             <Header inverted as="h1">Top Scores:</Header>
-            {this.state.players.map(player =>
+            {this.state.players.sort((a, b) => a.score < b.score ? 1 : -1).map((player) =>
               <List animated inverted divided relaxed size="massive" verticalAlign="middle">
                 <List.Item>
                   <List.Content floated="left">{player.player}</List.Content>
