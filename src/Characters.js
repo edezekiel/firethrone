@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import firestore from './Firestore'
 import firebase from 'firebase'
+import CharacterList from './CharacterList'
 
 class Characters extends Component {
   state = {
-    email: "",
-    fullname: ""
+    fullname: "",
+    image: "",
+    alive: ""
   };
 
   updateInput = e => { this.setState({
@@ -13,23 +15,37 @@ class Characters extends Component {
     });
   }
 
-  addUser = e => {
+  addCharacter = e => {
     e.preventDefault();
     const db = firebase.firestore();
-    const userRf = db.collection('users').add({
+    const userRf = db.collection('characters').add({
       fullname: this.state.fullname,
-      email: this.state.email
+      image: this.state.image,
+      alive: this.state.alive,
     });
 
     this.setState({
       fullname: "",
-      email: ""
+      image: "",
+      alive: ""
     });
   }
 
+  uploadCharacterList = function() {
+    const db = firebase.firestore();
+    CharacterList.forEach((el) => {
+      db.collection('characters').add({
+        name: el.name,
+        image: el.image,
+        alive: el.alive,
+      })
+    })
+  }
+
   render() {
+    this.uploadCharacterList()
     return(
-      <form onSubmit={this.addUser}>
+      <form onSubmit={this.addCharacter}>
         <input
           type="text"
           name="fullname"
@@ -38,16 +54,22 @@ class Characters extends Component {
           value={this.state.fullname}
         />
         <input
-          type="email"
-          name="email"
-          placeholder="Email"
+          type="text"
+          name="image"
+          placeholder="Image"
           onChange={this.updateInput}
-          value={this.state.email}
+          value={this.state.image}
+        />
+        <input
+          type="text"
+          name="alive"
+          placeholder="Alive"
+          onChange={this.updateInput}
+          value={this.state.alive}
         />
         <button type="submit">Submit</button>
       </form>
     )
   }
 }
-
 export default Characters
