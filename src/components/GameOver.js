@@ -12,7 +12,7 @@ class GameOver extends Component {
 
   render() {
     return(
-      <div style={{"display": "flex", "justify-content": "center", "flex-direction": "column", "height": "80vh"}}>
+      <div style={{"display": "flex", "justify-content": "center", "flex-direction": "column", "min-height": "80vh"}}>
           <Container textAlign="center" style={{"width": "50%"}}>
             <Segment inverted>
               <Header inverted size="huge"> Final Score: {this.props.streak} </Header>

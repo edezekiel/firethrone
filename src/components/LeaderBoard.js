@@ -27,8 +27,8 @@ class LeaderBoard extends Component {
           {this.state.players.length ?
           <div>
             <Header inverted as="h1">Top Scores:</Header>
-            {this.state.players.sort((a, b) => a.score < b.score ? 1 : -1).map((player) =>
-              <List animated inverted divided relaxed size="massive" verticalAlign="middle">
+            {this.state.players.sort((a, b) => a.score < b.score ? 1 : -1).slice(0, 10).map((player) =>
+              <List inverted divided relaxed size="huge" verticalAlign="middle">
                 <List.Item>
                   <List.Content floated="left">{player.player}</List.Content>
                   <List.Content floated='right'>
