@@ -21,13 +21,13 @@ class App extends Component {
 
   render() {
     return (
-      <Container >
+      <div >
         <Nav />
         <div style={ mainBg }>
           <GameContainer/>
         </div>
         <Footer />
-      </Container>
+      </div>
     );
   }
 }
