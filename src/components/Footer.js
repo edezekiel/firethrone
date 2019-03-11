@@ -1,21 +1,35 @@
 import React, { Component } from 'react'
 
-import { Segment, Container, Header } from 'semantic-ui-react'
+import { Segment, Container, Header, Icon, List } from 'semantic-ui-react'
 
 class Footer extends Component {
 
   render(){
     return(
-      <Segment inverted style={{"height": "10vh", "line-height": "10vh", "margin": "0", "border-radius": "0"}}>
+      <Segment vertical inverted padded>
         <Container textAlign="center">
-          <Header inverted style={{"margin-top": "2vh"}}>
-            Made with ❤️ by
-            <a href='https://github.com/edezekiel'
-            target="blank"> Ed</a> and
-
-            <a href='https://github.com/kwamamissah'
-            target="blank"> Kwam</a>
-          </Header>
+            <List horizontal relaxed>
+              <List.Item>
+                <a href="https://github.com/edezekiel" target="_blank">
+                  <Icon name="github" link size="big"></Icon>
+                </a>
+              </List.Item>
+              <List.Item>
+                <a href="https://twitter.com/EdwardAEzekiel" target="_blank">
+                  <Icon name="twitter" link size="big"></Icon>
+                </a>
+              </List.Item>
+              <List.Item>
+                <a href="https://www.linkedin.com/in/edezekiel/" target="_blank">
+                  <Icon name="linkedin" link size="big"></Icon>
+                </a>
+              </List.Item>
+              <List.Item>
+                <a href="https://medium.com/@ed.a.ezekiel" target="_blank">
+                  <Icon name="medium m" link size="big"></Icon>
+                </a>
+              </List.Item>
+            </List>
         </Container>
       </Segment>
     )
