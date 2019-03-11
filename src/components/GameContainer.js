@@ -14,7 +14,9 @@ export default class GameContainer extends Component {
     viewed: [],
     character: null,
     gameOver: false,
-    newGame: true
+    newGame: true,
+    redirect: false,
+    player: "Syrio Forel",
   }
 
   componentDidMount(){
@@ -45,7 +47,6 @@ export default class GameContainer extends Component {
   renderNextCharacter = () => {
     let unviewed = this.getUnviewed()
     let randomNum = this.getRandomInt(unviewed.length)
-    console.log(this.state.characters, this.state.viewed)
     let nextCharacter = unviewed[randomNum]
     return nextCharacter
   }
@@ -64,7 +65,13 @@ export default class GameContainer extends Component {
     if (this.state.newGame) {
       return <StartGame startGame={this.startGame} />
     } else if (this.state.gameOver || (this.state.viewed.length === this.state.characters.length)) {
-      return <GameOver restartGame={this.restartGame} streak={this.state.viewed.length} />
+      return <GameOver
+                player={this.state.player}
+                handleChange={this.handleChange}
+                restartGame={this.restartGame}
+                streak={this.state.viewed.length}
+                saveScore={this.saveScore}
+                />
     } else if (this.state.viewed.length === 0) {
       return <CharacterCard handleClick={this.handleClick} character={this.renderFirstCharacter()} streak={this.state.viewed.length} />
     } else {
@@ -76,8 +83,24 @@ export default class GameContainer extends Component {
     this.setState({ newGame: false })
   }
 
-  restartGame = () => {
-    this.setState({ viewed: [], gameOver: false })
+  handleChange = (event) => {
+    this.setState({[event.target.name]: event.target.value})
+  }
+
+  saveScore = (e) => {
+    e.preventDefault();
+    const db = firebase.firestore();
+    const userRf = db.collection('players').add({
+      player: this.state.player,
+      score: this.state.viewed.length
+    });
+
+    this.setState({
+      player: "",
+      viewed: [],
+      newGame: true,
+      gameOver: false
+    });
   }
 
   render() {
