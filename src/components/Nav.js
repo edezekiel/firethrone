@@ -7,14 +7,13 @@ class Nav extends Component {
 
   render(){
     return(
-      <Menu style={{"height": "10vh", margin: "0"}}>
+      <Menu inverted style={{"height": "10vh", "margin": "0", "border-radius": "0"}}>
         <Menu.Item floated="right">
-          <Header>GOT Game?</Header>
+          <Header inverted>GOT Game?</Header>
         </Menu.Item>
         <Menu.Item floated="right">
-          <Header>Leaderboard</Header>
+          <Header inverted>Leaderboard</Header>
         </Menu.Item>
-
       </Menu>
     )
   }

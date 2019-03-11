@@ -11,7 +11,7 @@ import { Button, Container, Header } from 'semantic-ui-react'
 const GameOver = (props) => {
 
   return(
-    <div style={{"display": "flex", "justify-content": "center", "flex-direction": "column", "height": "100vh"}}>
+    <div style={{"display": "flex", "justify-content": "center", "flex-direction": "column", "height": "80vh"}}>
         <Container textAlign="center">
           <Header inverted size="huge"> Final Score: {props.streak} </Header>
           <Button onClick={() => props.restartGame()}> Restart Game </Button>
