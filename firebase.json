@@ -1,6 +1,6 @@
 {
   "firestore": {
-    "rules": "firestore.rule",
+    "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
@@ -9,17 +9,6 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "headers": [
-    {
-      "source": "**/*.@(js|html)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "max-age=0"
-        }
-      ]
-    }
     ],
     "rewrites": [
       {
